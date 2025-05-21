@@ -122,6 +122,6 @@ If ORDS fails to start on the first run, this is expected. Just wait for APEX in
 This project uses the official Oracle container images:
 
 - [`gvenzl/oracle-free:23.6-full`](https://hub.docker.com/r/gvenzl/oracle-free)
-- [`oraclelinux:8-slim` + custom ORDS setup]
+- [`container-registry.oracle.com/database/ords:25.1.0` + custom ORDS setup]
 
 Oracle APEX and ORDS are free to use under the [Oracle Free Use Terms and Conditions](https://www.oracle.com/downloads/licenses/oracle-free-license.html).
