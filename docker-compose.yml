@@ -1,0 +1,45 @@
+services:
+  oracle-db:
+    image: gvenzl/oracle-free:23.6-full
+    container_name: oracle-db
+    ports:
+      - "1521:1521"
+      - "5500:5500"
+    environment:
+      - ORACLE_PASSWORD=${ORACLE_PASSWORD}
+    volumes:
+      # - oracle-data:/opt/oracle/oradata ℹ️ Add this to persist data
+      - ./apex:/opt/oracle/apex
+      - ./scripts:/docker-entrypoint-initdb.d
+    networks:
+      - oracle-network
+
+  ords:
+    image: container-registry.oracle.com/database/ords:25.1.0
+    container_name: oracle-ords
+    ports:
+      - "${ORDS_PORT}:8080"
+    environment:
+      - DB_HOSTNAME=oracle-db
+      - DB_PORT=1521
+      - DB_SERVICE=${SERVICE_NAME}
+      - DB_USER=ORDS_PUBLIC_USER
+      - DB_PASSWORD=${ORACLE_PASSWORD}
+      - APEX_PUBLIC_USER_PASSWORD=${ORACLE_PASSWORD}
+      - CONN_STRING=//oracle-db:1521/${SERVICE_NAME}
+      - ORACLE_PWD=${ORACLE_PASSWORD}
+    depends_on:
+      - oracle-db
+    networks:
+      - oracle-network
+    volumes:
+      - ./apex/images:/opt/oracle/ords/images
+      - ./ords/config:/etc/ords/config
+
+networks:
+  oracle-network:
+    driver: bridge
+
+volumes:
+  oracle-data:
+    driver: local

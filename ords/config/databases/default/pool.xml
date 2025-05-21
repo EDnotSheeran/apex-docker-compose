@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Saved on Wed May 21 03:41:30 UTC 2025</comment>
+<entry key="db.connectionType">customurl</entry>
+<entry key="db.customURL">jdbc:oracle:thin:@//oracle-db:1521/FREEPDB1</entry>
+<entry key="db.username">ORDS_PUBLIC_USER</entry>
+<entry key="feature.sdw">true</entry>
+<entry key="plsql.gateway.mode">proxied</entry>
+<entry key="restEnabledSql.active">true</entry>
+<entry key="security.requestValidationFunction">ords_util.authorize_plsql_gateway</entry>
+</properties>

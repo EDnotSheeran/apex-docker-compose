@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+  <comment>Saved on Wed May 21 03:41:49 UTC 2025</comment>
+  <entry key="database.api.enabled">true</entry>
+  <entry key="mongo.enabled">true</entry>
+  <entry key="standalone.access.log">/tmp/ords_access_logs/</entry>
+  <entry key="standalone.static.path">/opt/oracle/ords/images</entry>
+  <entry key="standalone.http.port">8080</entry>
+</properties>
