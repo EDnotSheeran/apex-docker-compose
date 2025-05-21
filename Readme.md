@@ -1,6 +1,6 @@
 # Oracle APEX with Docker Compose
 
-This project provides a simple way to run **Oracle APEX 24.1** using Docker Compose with an Oracle Free database and Oracle REST Data Services (ORDS).
+This project provides a simple way to run **Oracle APEX 24.2** using Docker Compose with an Oracle Free database and Oracle REST Data Services (ORDS).
 
 ---
 
