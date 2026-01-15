@@ -60,6 +60,16 @@ Wait until the logs show a message similar to:
 APEX installation completed successfully
 ```
 
+Then create the admin user for your instance:
+
+```
+docker exec -it oracle-db bash
+cd /opt/oracle/apex
+sqlplus / as sysdba
+ALTER SESSION SET CONTAINER=FREEPDB1;
+@apxchpwd.sql
+```
+
 Only then proceed to the next step.
 
 ---
@@ -114,6 +124,23 @@ docker-compose restart ords
 ```
 
 If ORDS fails to start on the first run, this is expected. Just wait for APEX installation to finish and try again.
+
+---
+## 🎁 Extra
+
+If you want to host your workspace on cloudflared, fisrt create a tunel pointing to the apex service on:
+
+```
+  http://host.docker.internal:8080
+```
+
+Then on `settings.xml` add the following entry?
+```
+  <entry key="security.externalSessionTrustedOrigins">https://yoursite.com.br</entry>
+```
+
+
+apex.selfhost.site
 
 ---
 
