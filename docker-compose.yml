@@ -13,6 +13,18 @@ services:
       - ./scripts:/docker-entrypoint-initdb.d
     networks:
       - oracle-network
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "bash",
+          "-c",
+          "echo \"SELECT 1 FROM dual;\" | sqlplus -s / as sysdba | grep 1"
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 20
+      start_period: 60s
 
   ords:
     image: container-registry.oracle.com/database/ords:25.1.0
@@ -29,7 +41,8 @@ services:
       - CONN_STRING=//oracle-db:1521/${SERVICE_NAME}
       - ORACLE_PWD=${ORACLE_PASSWORD}
     depends_on:
-      - oracle-db
+      oracle-db:
+        condition: service_healthy
     networks:
       - oracle-network
     volumes:
